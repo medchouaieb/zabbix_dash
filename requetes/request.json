@@ -1,0 +1,19 @@
+{
+    "jsonrpc": "2.0",
+    "method": "trigger.get",
+    "params": {
+        "output": [
+            "triggerid",
+            "description",
+            "priority"
+            
+        ],
+        "groupids":"23",
+        "filter": {
+            "value": 1
+        },"selectGroups": ["groupid","name"]
+        
+    },
+    "id":1,
+    "auth": "a54b2efff8eed41f847209b5ca891428"
+}
