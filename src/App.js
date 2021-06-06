@@ -1,17 +1,23 @@
 import React, { useState,useEffect } from 'react'
 import zabbix from './services/zabbix';
 import server from './assets/imgstore.png'
+import variables from './assets/style.scss'
+import advancia from './assets/logo.png';
+import Groupe from './components/groupe';
+
 const App = () =>{
   const [tokens, settoken] = useState(null);
   const [problems,setProblems] = useState();
   var uniqueTags = []
  //const token = zabbix.get_user_token().then(token=>settoken(token))
  
- useEffect(()=>zabbix.get_problems("0ed7a3b19347cfc407e352308aa56305").then(problem=>setProblems(problem))
- ,[]) 
+ useEffect(()=>{
+  zabbix.get_problems("0ed7a3b19347cfc407e352308aa56305").then(problem=>setProblems(problem))
+  },[]) 
 if (uniqueTags.length ===0 && problems!=null){
    uniqueTags= problems.map(problem=>problem.groups[0].name)
    uniqueTags = [...new Set(uniqueTags)];
+   console.log(variables)
   }
 
   
@@ -26,17 +32,21 @@ if (uniqueTags.length ===0 && problems!=null){
         }
 */
   return (
-    <div style={{display:'flex', flexDirection:'row',width:'100%',flexWrap:'wrap'}}>
+    <div>
+      <h2 style={{textAlign:'center'}}>Monitoring ADV</h2>
+      <div class='circle-container'>
+        
         {
-          uniqueTags ? uniqueTags.map(problem=>{
+          uniqueTags ? uniqueTags.map(groupe=>{
             return(
-            <div style={{color:'black',padding:'5px',margin:'10px',width:'30%'}}>
-                <img src={server} style={{borderRadius:'30px',background:'red'}}/>
-                <p>{problem}</p>
-              </div>)
+              <Groupe groupe={groupe} problem={problems.filter(problem=>problem.groups[0].name===groupe)}/>
+            )
+              
           
           }):'<p>nothing</p>'
         }
+        
+        </div>
     </div>
   );
 }
