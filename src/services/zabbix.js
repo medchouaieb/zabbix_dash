@@ -24,17 +24,21 @@ const get_problems = (token) =>{
                 "output": [
                     "triggerid",
                     "description",
-                    "priority"
+                    "priority",
+                    "Acknowledged"
                     
                 ],
                 "filter": {
                     "value": 1
-                },"selectGroups": ["groupid","name"]
+                },
+                "lastChangeSince":"1609459200",
+                "selectGroups": ["groupid","name"]
                 
             },
             "id":1,
             "auth": token
         }
+        console.log('timestamp',new Date().getMonth());
         return axios.post(BASE_URL,request).then(response=>response.data.result)
     }
 

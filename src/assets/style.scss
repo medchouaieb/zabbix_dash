@@ -4,7 +4,7 @@
 /// @param {Integer} $item-count - Number of items on the circle
 /// @param {Length} $circle-size - Large circle size
 /// @param {Length} $item-size - Single item size
-$item-count : 39;
+$item-count : 6;
 :export {
   itemcount:$item-count;
 }
@@ -38,9 +38,12 @@ $item-count : 39;
       }
     }
   }
+  
   .circle-container {
-      @include on-circle($item-count: $item-count, $circle-size: 1400px, $item-size: 60px); 
+      @include on-circle($item-count: $item-count, $circle-size: 850px, $item-size: 90px); 
       margin: 5em auto 0;
+      top:  50%;
+      transform: translateY(-5%);
       padding-bottom: 35px;
       img { 
         display: block; 
@@ -55,5 +58,45 @@ $item-count : 39;
       }
 
     }
+  
+    .circle-container1 {
+      @include on-circle($item-count: 18, $circle-size: 600px, $item-size: 90px); 
+      margin: 5em auto 0;
+      padding-bottom: 35px;
+      top:  50%;
+      transform: translateY(-140%);
+      img { 
+        display: block; 
+        max-width: 100%; 
+        border-radius: 50%;
+        transition: .15s;
+        
+        &:hover,
+        &:active {
+          filter: grayscale(0);
+        }
+      }
+
+    }
+    .circle-container2 {
+      @include on-circle($item-count: 9, $circle-size: 300px, $item-size: 90px); 
+      margin: 5em auto 0;
+      padding-bottom: 35px;
+      top:  50%;
+      transform: translateY(-430%);
+      img { 
+        display: block; 
+        max-width: 100%; 
+        border-radius: 50%;
+        transition: .15s;
+        
+        &:hover,
+        &:active {
+          filter: grayscale(0);
+        }
+      }
+
+    }
+    
 
     
